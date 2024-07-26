@@ -30,7 +30,7 @@ public class ClientServiceImpl implements ClientService {
                 registrationRequest.getEmail(),
                 passwordEncoder.encode(registrationRequest.getPassword()),
                 Arrays.asList(new Role("ROLE_CLIENT")));
-        return client;
+        return clientRepository.save(client);
     }
 
     @Override
