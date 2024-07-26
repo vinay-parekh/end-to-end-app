@@ -1,0 +1,23 @@
+server:
+  port: 2000
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/end_to_end_app_db
+    username: postgres
+    password: 12345
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: jainvinay.4802@gmail.com
+    password: khlnwepxdgmauwqc
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
