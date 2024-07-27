@@ -19,17 +19,17 @@ public class VerificationTokenServiceImpl implements VerificationTokenService{
     public String validateToken(String token) {
         Optional<VerificationToken> theToken = tokenRepository.findByToken(token);
         if (theToken.isEmpty()) {
-            return "invalid";
+            return "INVALID";
         }
         Client client = theToken.get().getClient();
         Calendar calendar = Calendar.getInstance();
         if ((theToken.get().getExpirationTime().getTime()
                 - calendar.getTime().getTime() <= 0)) {
-            return "expired";
+            return "EXPIRED";
         }
         client.setEnabled(true);
         clientRepository.save(client);
-        return "valid";
+        return "VALID";
     }
 
     @Override
