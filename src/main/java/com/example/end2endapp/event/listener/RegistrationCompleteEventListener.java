@@ -32,7 +32,7 @@ public class RegistrationCompleteEventListener implements ApplicationListener<Re
         // 3. save the token for the client
         tokenService.saveVerificationTokenForClient(client, vToken);
         // 4. build the verification url
-        String url = event.getConfirmationUrl() + "/registration/verifyEmail?token" + vToken;
+        String url = event.getConfirmationUrl() + "/registration/verifyEmail?token=" + vToken;
         // 5. send the email to the user
         try {
             sendVerificationEmail(url);
@@ -45,8 +45,8 @@ public class RegistrationCompleteEventListener implements ApplicationListener<Re
         String subject = "Email Verification";
         String senderName = "Clients Verification Service";
         String mailContent = "<p> Hi, " + client.getFirstName() + ", </p>"+
-                "<p>Thank you for registering with us," + "" +
-                "Please, follow the link below to complete your registration.</p>"+
+                "<p>Thank you for registering with us, " +
+                "Please follow the link below to complete your registration.</p>"+
                 "<a href=\"" +url+ "\">Verify your email to activate your account</a>"+
                 "<p> Thank you <br> Clients Registration Portal Service";
         emailMessage(subject, senderName, mailContent, mailSender, client);
