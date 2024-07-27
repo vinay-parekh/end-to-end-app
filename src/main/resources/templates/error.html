@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+          crossorigin="anonymous">
+</head>
+<body>
+
+    <div class = "container offset-sm-3 col-md-8 mt-lg-5">
+
+        <!-- alert messages -->
+        <div class="row mt-2">
+            <div th:if="${param.invalid}" class="col-sm-8">
+                <p class="alert alert-danger">Invalid login credentials</p>
+            </div>
+
+            <div th:if="${param.expired}" class="col-sm-8">
+                <p class="alert alert-info">This verification link has already expired</p>
+            </div>
+
+<!--            <div th:if="${param.valid}" class="col-sm-8">-->
+<!--                <p class="alert alert-info">Email verified successfully, please login here</p>-->
+<!--            </div>-->
+
+<!--            &lt;!&ndash; show logout warning alert when logged out &ndash;&gt;-->
+<!--            <div th:if="${param.logout}" class="col-sm-8">-->
+<!--                <p class="alert alert-warning">You have been logged out</p>-->
+<!--            </div>-->
+        </div>
+        <a href="#" th:href="@{/}">Go to home page</a>
+    </div>
+
+
+</body>
+</html>
