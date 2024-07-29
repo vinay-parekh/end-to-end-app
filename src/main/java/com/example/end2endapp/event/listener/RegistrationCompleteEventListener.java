@@ -32,7 +32,7 @@ public class RegistrationCompleteEventListener implements ApplicationListener<Re
         // 3. save the token for the client
         tokenService.saveVerificationTokenForClient(client, vToken);
         // 4. build the verification url
-        String url = event.getConfirmationUrl() + "/registration/verifyEmail?token=" + vToken;
+        String url = event.getConfirmationUrl()+"/registration/verifyEmail?token="+vToken;
         // 5. send the email to the user
         try {
             sendVerificationEmail(url);
@@ -52,7 +52,20 @@ public class RegistrationCompleteEventListener implements ApplicationListener<Re
         emailMessage(subject, senderName, mailContent, mailSender, client);
     }
 
-    private void emailMessage(String subject, String senderName, String mailContent,
+    public void sendPasswordResetVerificationEmail(String url) throws MessagingException,
+            UnsupportedEncodingException {
+        String subject = "Password Reset Request Verification";
+        String senderName = "Clients Verification Service";
+        String mailContent = "<p> Hi, " + client.getFirstName() + ", </p>"+
+                "<p><b>You recently requested to reset your password, " +
+                "Please follow the link below to complete the action.</p>"+
+                "<a href=\"" +url+ "\">Reset password</a>"+
+                "<p> Thank you <br> Clients Registration Portal Service";
+        emailMessage(subject, senderName, mailContent, mailSender, client);
+
+    }
+
+    private static void emailMessage(String subject, String senderName, String mailContent,
                               JavaMailSender mailSender, Client client)
             throws MessagingException, UnsupportedEncodingException{
 
