@@ -11,8 +11,6 @@
 
   <div class = "container offset-sm-3 col-md-8 mt-lg-5">
 
-    <form th:action="@{/login}" method="POST" class="px-4 mt-lg-5">
-
       <!-- alert messages -->
       <div class="row mt-2">
         <div th:if="${param.error}" class="col-sm-8">
@@ -24,7 +22,7 @@
         </div>
 
         <div th:if="${param.valid}" class="col-sm-8">
-          <p class="alert alert-info">Email verified successfully, please login here</p>
+          <p class="alert alert-info">Email verified successfully, please log in here</p>
         </div>
 
         <!-- show logout warning alert when logged out -->
@@ -33,6 +31,7 @@
         </div>
       </div>
 
+    <form th:action="@{/login}" method="POST" class="px-4 mt-lg-5">
       <h2 class="mb-4">Client Login Form</h2>
       <div class="mb-3 row">
         <label for="email" class="col-sm-2 col-form-label">Email</label>
@@ -54,6 +53,7 @@
         <button type="submit" name="login" id="login" class="btn btn-success">Login</button>
         <span>Not registered yet? <a href="#" th:href="@{/registration/registration-form}">Register</a></span>
         <div class="vr"></div>
+        <span><a href="#" th:href="@{/registration/forgot-password-request}">Forgot password</a></span>
       </div>
 
     </form>
