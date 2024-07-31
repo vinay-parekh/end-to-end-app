@@ -57,7 +57,7 @@ public class RegistrationController {
             case "expired":
                 return "redirect:/error?expired";
             case "valid":
-                return "redirect:/error?valid";
+                return "redirect:/login?valid";
             default:
                 return "redirect:/error?invalid";
         }
@@ -89,7 +89,7 @@ public class RegistrationController {
         return "redirect:/registration/forgot-password-request?success";
     }
 
-    @GetMapping("/reset-password-form")
+    @GetMapping("/password-reset-form")
     public String passwordResetForm(@RequestParam("token") String token, Model model) {
         model.addAttribute("token", token);
         return "password-reset-form";
