@@ -9,4 +9,5 @@ public interface VerificationTokenService {
     String validateToken(String token);
     void saveVerificationTokenForClient(Client client, String token);
     Optional<VerificationToken> findByToken(String token);
+    void deleteClientToken(Long id);
 }
